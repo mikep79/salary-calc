@@ -2,10 +2,12 @@ $(document).ready(onReady);
 
 var employees = [];
 var monthlyCost = 0;
+employeeCounter = 0;
 
 function onReady() {    
 // event listener for submit button
     $('#submitButton').on('click', addEmployee);
+    $('.container').on('click', '.deleteButton', deleteEmployee);
 }
 
 // constructor to create new employee
@@ -14,8 +16,8 @@ function Employee (fName, lName, idNumber, title, salary) {
     this.lName = lName;
     this.idNumber = idNumber;
     this.title = title;
-    this.salary = parseInt(salary/12);             // change from yearly string to monthly number
-    monthlyCost += this.salary;
+    this.salary = salary;             // change from yearly string to monthly number
+    monthlyCost += parseInt(this.salary/12);
     $('#monthlyCost').text(monthlyCost);           // update monthly cost to DOM
 }
 
@@ -26,18 +28,33 @@ function addEmployee() {
     $idNumber = $('#idNumber');
     $title = $('#title');
     $salary = $('#salary');
-
+    
     // alert user if field left blank
     if ($fName.val() === '' || $lName.val() === '' || $idNumber.val() === '' || $title.val() === '' || $salary.val() === ''){
         alert('Please enter all fields. Thanks. :)');
         return;
     }
-
     var employee = (new Employee ($fName.val(), $lName.val(), $idNumber.val(), $title.val(), $salary.val()));
     console.log(employee);
     employees.push(employee);
     // clear values
     $fName.val(''); $lName.val(''); $idNumber.val(''); $title.val(''); $salary.val('');
+    newEmployeeDiv();
+}
+
+function newEmployeeDiv() {
+    var $article = $('<article><p>');
+    $('.container').append($article);
+    $article.append(employees[employeeCounter].fName + ' ' + employees[employeeCounter].lName);
+    $article.append('<br>ID Number: ' + employees[employeeCounter].idNumber);
+    $article.append('<br>' + employees[employeeCounter].title);
+    $article.append('<br>Annual Salary: $' + employees[employeeCounter].salary);
+    $article.append('<br><button class="deleteButton">Delete</button></p>');
+    employeeCounter++;
+}
+
+function deleteEmployee() {    
+    $(this).parent().remove();
 }
 
 /*
@@ -47,8 +64,8 @@ not neccessary 2. Create button that when clicked will update monthlyCost?
 done 3. Find a way to post monthlyCost to DOM.
 
 Opt: 
-1. Put new employee info onto DOM. Each time 'submit' is pressed.
-2. (hard) Create delete button
+done 1. Put new employee info onto DOM. Each time 'submit' is pressed.
+done 2. (hard) Create delete button
 
 HELPFUL NOTES:
 .val() can take a function as a parameter. Useful?

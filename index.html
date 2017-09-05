@@ -7,13 +7,29 @@
         <link rel='stylesheet' type='text/css' href='style.css' />
     </head>
     <body>
-        <p>First Name: <input id='fName' type='text' placeholder='Enter here'></p>
-        <p>Last Name: <input id= 'lName' type='text'></p>
-        <p>ID Number: <input id='idNumber' type='text'></p>
-        <p>Job Title: <input id='title' type='text'></p>
-        <p>Annual Salary: <input id='salary' type='text'></p>
-
-        <button id='submitButton'>Submit Here</button>
-        <p>Monthly Cost: <span id='monthlyCost'></span></p>
+        <h1 id='heading'>Employee Cost and Information</h1>
+        <div class='form'>
+            <p>First Name: <span class='inputs'><input id='fName' type='text' placeholder='Enter here'></span></p>
+            <p>Last Name: <span class='inputs'><input id= 'lName' type='text'></span></p>
+            <p>ID Number: <span class='inputs'><input id='idNumber' type='text'></span></p>
+            <p>Job Title: <span class='inputs'><input id='title' type='text'></span></p>
+            <p>Annual Salary: <span class='inputs'><input id='salary' type='text'></span></p>
+            <div class='button'>
+                <button id='submitButton'>Submit Here</button>
+            </div>
+        </div>
+        <h2>Monthly Cost: $<span id='monthlyCost'></span></h2>
+        <div class='container'></div>
+            <!--Pseudo code; for each new employee, add: 
+            <article>
+                <p>
+                    Employee Name
+                    <br>ID Number
+                    <br>Job Title:
+                    <br>Annual Salary
+                    <br><button class='deleteButton'> Delete </button>
+                </p>
+            </article>
+            -->
     </body>
 </html>
