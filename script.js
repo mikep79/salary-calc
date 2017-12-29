@@ -39,6 +39,7 @@ function addEmployee() {
     employees.push(employee);
     // clear values
     $fName.val(''); $lName.val(''); $idNumber.val(''); $title.val(''); $salary.val('');
+    //$('.inputs').val('');     // could use this instead to clear ALL values.
     newEmployeeDiv();
 }
 
@@ -56,32 +57,3 @@ function newEmployeeDiv() {
 function deleteEmployee() {    
     $(this).parent().remove();
 }
-
-/*
-
-done 1. Store employees[i].(salary/12) in var monthlyCost using +=.
-not neccessary 2. Create button that when clicked will update monthlyCost?
-done 3. Find a way to post monthlyCost to DOM.
-
-Opt: 
-done 1. Put new employee info onto DOM. Each time 'submit' is pressed.
-done 2. (hard) Create delete button
-
-HELPFUL NOTES:
-.val() can take a function as a parameter. Useful?
-
-OBJECTIVES:
-A 'Submit' button should collect the form information, store the 
-information to calculate monthly costs, append information to the DOM and clear the input fields. 
-Using the stored information, calculate monthly costs and append this to the to DOM.
-
-## Hard Mode
-Create a delete button that removes an employee from the DOM. For Hard mode, it 
-does not need to remove that Employee's salary from the reported total.
-
-## Pro Mode
-Once the employee is deleted, update the total spend on salaries account for this employee's removal. 
-This will require that the logic knows which element was removed. Look into jQuery's .data() function. 
-You will need to do something both when the employee is added and when they are deleted.
-
-*/
